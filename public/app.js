@@ -12,7 +12,7 @@ function getBalance(address) {
     return web3.fromWei(web3.eth.getBalance(address).toNumber(), 'ether');
 }
 
-window.App = { //where to close
+window.App = { 
     start: function() {
         var self = this;
 
@@ -26,13 +26,13 @@ window.App = { //where to close
                 alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
                 return;
             }
- accounts = accs;
+	accounts = accs;
 
-$("#playerAddress").text(web3.eth.accounts[0]); //prints account address
-            console.log(accounts);
-               console.log("uSER iS cREATED");  
-            self.initializeConference();
-        });
+	$("#playerAddress").text(web3.eth.accounts[0]); //prints account address
+	    console.log(accounts);
+	    console.log("uSER iS cREATED");  
+	    self.initializeConference();
+	});
     },
 
     initializeConference: function() {
@@ -79,8 +79,8 @@ $("#playerAddress").text(web3.eth.accounts[0]); //prints account address
                 console.log(result);
             })
         })
-    };
-
+    },
+};
 
 window.addEventListener('load', function() {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
@@ -99,14 +99,14 @@ window.addEventListener('load', function() {
 
 
     $("#BetCreate").click(function() {
-       createBet();
+       App.createBet();
     });
 	
-	$("#BetAccept").click(function() {
-        acceptBet();
+    $("#BetAccept").click(function() {
+       App.acceptBet();
     });
 	
-	$("#BetResult").click(function() {
-        result();
-
+    $("#BetResult").click(function() {
+       App.result();
+    });
 });
