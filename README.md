@@ -1,4 +1,4 @@
-"# Mobile Manufacturer" 
+"# WeatherBet Dapp" 
 
 Steps:
 
