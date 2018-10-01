@@ -3,7 +3,7 @@
 Steps:
 
 1. clone the code using this url
-    https://github.com/karthiksamaganam-4/Ethereum.git
+    https://github.com/dmajumder4292/weatherBetDapp.git
 
 2. install node modules
    > npm install
@@ -21,7 +21,7 @@ Steps:
 6. deploy the smartcontrats to the testrpc network
     go to ethereum folder and do node deploy.js
 
-    > cd etehreum
+    > cd ethereum
     > node deploy.js
 
 7. start the node server
