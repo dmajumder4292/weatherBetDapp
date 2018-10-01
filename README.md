@@ -6,26 +6,23 @@ Steps:
     https://github.com/dmajumder4292/weatherBetDapp.git
 
 2. install node modules
-   > npm install
+   > npm install  
 
-3. install bower components
-   > bower install   
-
-4. compile the smart contract code
+3. compile the smart contract code
     > cd ethereum
     > node compile.js
 
-5. start the local testrpc networkg
+4. start the local testrpc networkg
     > testrpc
 
-6. deploy the smartcontrats to the testrpc network
+5. deploy the smartcontrats to the testrpc network
     go to ethereum folder and do node deploy.js
 
     > cd ethereum
     > node deploy.js
 
-7. start the node server
+6. start the node server
 
     > node server.js
 
-8. open the browser the hit http://localhost:3000        
+7. open the browser the hit http://localhost:3000        
