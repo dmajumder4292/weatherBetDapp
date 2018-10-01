@@ -1,5 +1,7 @@
 "# WeatherBet Dapp" 
 
+Make changes to the mnemonics in ethereum/createWeb3.js file
+ 
 Steps:
 
 1. clone the code using this url
@@ -12,17 +14,14 @@ Steps:
     > cd ethereum
     > node compile.js
 
-4. start the local testrpc networkg
-    > testrpc
-
-5. deploy the smartcontrats to the testrpc network
+4. deploy the smartcontrats to the testrpc network
     go to ethereum folder and do node deploy.js
 
     > cd ethereum
     > node deploy.js
 
-6. start the node server
+5. start the node server
 
     > node server.js
 
-7. open the browser the hit http://localhost:3000        
+6. open the browser the hit http://localhost:3000        
