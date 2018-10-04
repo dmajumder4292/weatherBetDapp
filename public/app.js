@@ -5,7 +5,7 @@ var request = require('request');
 const weatherBet = require('../ethereum/build/WeatherBet.json');
 
 
-var WeatherBetInstance = web3.eth.Contract(JSON.parse(weatherBet.interface))
+var WeatherBetInstance = new web3.eth.Contract(JSON.parse(weatherBet.interface))
 var accounts, account;
 
 function getBalance(address) {
@@ -48,34 +48,34 @@ window.App = {
 
     },
 
-    createBet: function() {
+    createBet: function(betType, value) {
         WeatherBetInstance.deployed().then(function(instance) {
-            instance.createBet($(#ch).val(), {from: accounts[0], gas: 3000000, value: $(#cba).val()}).then(function(result){
+            instance.createBet(betType, {from: accounts[0], gas: 3000000, value: value}).then(function(result){
                 console.log(result);
             })
         })
     },
 
-    acceptBet: function() {
+    acceptBet: function(betID, value) {
         WeatherBetInstance.deployed().then(function(instance) {
-            instance.acceptBet($(#betid).val(), {from: accounts[0], gas: 3000000, value: $(#aba).val()}).then(function(result){
+            instance.acceptBet(betID, {from: accounts[0], gas: 3000000, value: value}).then(function(result){
                 console.log(result);
             })
         })
     },
 
-    result: function() {
+    result: async function(betID) {
         WeatherBetInstance.deployed().then(function(instance) {
             var _resTemp;
             var url = "http://api.openweathermap.org/data/2.5/forecast?q=london,us&mode=json&appid=aad54055817b7630b3545053cfe8fed5";
-            request(url, function(error, response, body){
+            await request(url, function(error, response, body){
                 if(!error && response.statusCode == 200){
                     var results = JSON.parse(body);
                     var temp = results.list[0].main.temp;
                     _resTemp = temp;
                 }
             });
-            instance.result($(#resbetid).val(), _resTemp, {from: accounts[0], gas: 3000000}).then(function(result){
+            instance.result(betID, _resTemp, {from: accounts[0], gas: 3000000}).then(function(result){
                 console.log(result);
             })
         })
@@ -99,14 +99,19 @@ window.addEventListener('load', function() {
 
 
     $("#BetCreate").click(function() {
-       App.createBet();
+       var betType = $("#ch").val();
+       var value = $("#cba").val()
+       App.createBet(betType, value);
     });
 	
     $("#BetAccept").click(function() {
-       App.acceptBet();
+       var betID = $("#betid").val();
+       var value = $("#aba").val();
+       App.acceptBet(betID, value);
     });
 	
     $("#BetResult").click(function() {
-       App.result();
+       var betID = $("#resbetid").val();
+       App.result(betID);
     });
 });
