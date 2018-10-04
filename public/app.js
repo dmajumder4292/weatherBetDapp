@@ -64,8 +64,8 @@ window.App = {
         })
     },
 
-    result: async function(betID) {
-        WeatherBetInstance.deployed().then(function(instance) {
+    result: function(betID) {
+        WeatherBetInstance.deployed().then(async function(instance) {
             var _resTemp;
             var url = "http://api.openweathermap.org/data/2.5/forecast?q=london,us&mode=json&appid=aad54055817b7630b3545053cfe8fed5";
             await request(url, function(error, response, body){
